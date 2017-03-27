@@ -3,9 +3,9 @@ var express = require('express'),
 
 var port = process.env.port || 8080;
 
-//var io = require('socket.io').listen(app)
-app.listen(port);
+var io = require('socket.io').listen(app.listen(port));
 
-require('./routes')(app);
+require('./config')(app, io);
+require('./routes')(app, io);
 
 console.log('Your appliation is running on http://localhost:' + port);

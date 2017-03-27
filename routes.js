@@ -1,5 +1,10 @@
 module.exports = function(app){
+
     app.get('/', function(req, res){
-        res.send('<h1>Hello world</h1>');
-    })
+        res.render('index');
+    });
+
+    var chat = io.on('connection', function(socket){
+        console.log('a user connected');
+    });
 }

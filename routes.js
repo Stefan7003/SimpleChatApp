@@ -1,4 +1,4 @@
-module.exports = function(app){
+module.exports = function(app, io){
 
     app.get('/', function(req, res){
         res.render('index');
@@ -6,5 +6,8 @@ module.exports = function(app){
 
     var chat = io.on('connection', function(socket){
         console.log('a user connected');
+        socket.on('disconnect', function(){
+            console.log('user disconnected');
+        });
     });
 }
